@@ -1,13 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Linq.Expressions;
+using System.Linq.Dynamic.Core;
 
 namespace Revalian
 {
@@ -18,6 +10,7 @@ namespace Revalian
         public float? Value { get; set; }
         public bool IsNull { get; set; }
         public bool IsNullable { get; set; }
+        public bool IsCalc { get; set; }
         #endregion
 
         public NumberBox()
@@ -40,14 +33,42 @@ namespace Revalian
             if (Text == string.Empty && IsNullable) Value = null;
             else
             {
-                bool result = float.TryParse(Text, out float v);
-                if (result)
-                {
-                    Value = v;
-                    Text = Value.ToString();
-                }
-                else Text = DefaultValue.ToString();
+                Value = CalcWithoutValue(Text);
+                if (Value == null) {
+                    if (!IsCalc || Calc(Text, 1) == null) {
+                        Value = DefaultValue;
+                        Text = Value.ToString();
+                    }                    
+                } else Text = Value.ToString();
             }
+        }
+
+        public float? Calc(String expr, int val)
+        {
+            try
+            {
+                var parameter = Expression.Parameter(typeof(int), "i");
+                var lambdaExpr = DynamicExpressionParser.ParseLambda([parameter], typeof(double), expr);
+                var func = (Func<int, double>)lambdaExpr.Compile();
+                var result = (float)func(val);
+                return result;
+            }
+            catch (System.Linq.Dynamic.Core.Exceptions.ParseException) { return null; }
+            catch (DivideByZeroException) { return float.PositiveInfinity; }
+        }
+
+        private float? CalcWithoutValue(String expr)
+        {
+            try
+            {
+                var lambdaExpr = DynamicExpressionParser.ParseLambda(typeof(double), expr);
+                var func = (Func<double>)lambdaExpr.Compile();
+                var result = (float)func();
+                if (float.IsNaN(result)) return null;
+                return result;
+            }
+            catch (System.Linq.Dynamic.Core.Exceptions.ParseException) { return null; }
+            catch (DivideByZeroException) { return null; }
         }
     }
 }

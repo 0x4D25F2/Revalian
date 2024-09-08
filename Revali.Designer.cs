@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Revali));
             btnSelectChart = new Button();
             lblChartPath = new Label();
             btnP1SelectSprite = new Button();
@@ -140,6 +141,7 @@
             // numP1Angle
             // 
             numP1Angle.DefaultValue = 0F;
+            numP1Angle.IsCalc = true;
             numP1Angle.IsNull = false;
             numP1Angle.IsNullable = true;
             numP1Angle.Location = new Point(72, 257);
@@ -153,6 +155,7 @@
             // numP1ScaleY
             // 
             numP1ScaleY.DefaultValue = 1F;
+            numP1ScaleY.IsCalc = true;
             numP1ScaleY.IsNull = false;
             numP1ScaleY.IsNullable = true;
             numP1ScaleY.Location = new Point(138, 221);
@@ -166,6 +169,7 @@
             // numP1ScaleX
             // 
             numP1ScaleX.DefaultValue = 1F;
+            numP1ScaleX.IsCalc = true;
             numP1ScaleX.IsNull = false;
             numP1ScaleX.IsNullable = true;
             numP1ScaleX.Location = new Point(72, 221);
@@ -179,6 +183,7 @@
             // numP1PivotY
             // 
             numP1PivotY.DefaultValue = 50F;
+            numP1PivotY.IsCalc = true;
             numP1PivotY.IsNull = false;
             numP1PivotY.IsNullable = true;
             numP1PivotY.Location = new Point(138, 293);
@@ -192,6 +197,7 @@
             // numP1PivotX
             // 
             numP1PivotX.DefaultValue = 50F;
+            numP1PivotX.IsCalc = true;
             numP1PivotX.IsNull = false;
             numP1PivotX.IsNullable = true;
             numP1PivotX.Location = new Point(72, 293);
@@ -205,6 +211,7 @@
             // numP1PositionY
             // 
             numP1PositionY.DefaultValue = 50F;
+            numP1PositionY.IsCalc = true;
             numP1PositionY.IsNull = false;
             numP1PositionY.IsNullable = true;
             numP1PositionY.Location = new Point(138, 185);
@@ -218,6 +225,7 @@
             // numP1PositionX
             // 
             numP1PositionX.DefaultValue = 50F;
+            numP1PositionX.IsCalc = true;
             numP1PositionX.IsNull = false;
             numP1PositionX.IsNullable = true;
             numP1PositionX.Location = new Point(72, 185);
@@ -352,6 +360,7 @@
             Controls.Add(lblChartPath);
             Controls.Add(btnSelectChart);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "Revali";
             Text = "Revalian";

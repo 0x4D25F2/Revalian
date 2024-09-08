@@ -1,5 +1,4 @@
 using RhythmBase.Components;
-using System.Linq.Expressions;
 
 namespace Revalian
 {
@@ -84,8 +83,8 @@ namespace Revalian
                 {
                     Ian.AddNewSprite(chart, lblP1SpritePath.Text,
                         (byte)(nudP1Room.Value - 1), chkP1Visibility.Checked, (int)nudP1Depth.Value,
-                        new PointE(numP1PositionX.Value, numP1PositionY.Value),
-                        new PointE(numP1ScaleX.Value, numP1ScaleY.Value));
+                        new PointE(numP1PositionX.Value, numP1PositionY.Value), new PointE(numP1ScaleX.Value, numP1ScaleY.Value),
+                        numP1Angle.Value, new PointE(numP1PivotX.Value, numP1PivotY.Value));
                 }
                 catch (Exception ex)
                 {

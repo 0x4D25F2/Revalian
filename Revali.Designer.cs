@@ -33,12 +33,18 @@
             btnP1SelectSprite = new Button();
             tabLevelEdit = new TabControl();
             tpSpriteImport = new TabPage();
+            lblAngle = new Label();
+            numP1Angle = new NumberBox();
+            numP1ScaleY = new NumberBox();
+            numP1ScaleX = new NumberBox();
+            numP1PivotY = new NumberBox();
+            numP1PivotX = new NumberBox();
+            numP1PositionY = new NumberBox();
+            numP1PositionX = new NumberBox();
+            lblP1Pivot = new Label();
+            btnP1ImportSprite = new Button();
             lblP1Scale = new Label();
-            txtP1ScaleX = new TextBox();
-            txtP1ScaleY = new TextBox();
             lblP1Position = new Label();
-            txtP1PositionY = new TextBox();
-            txtP1PositionX = new TextBox();
             nudP1Depth = new NumericUpDown();
             chkP1Visibility = new CheckBox();
             lblP1Depth = new Label();
@@ -46,7 +52,6 @@
             nudP1Room = new NumericUpDown();
             lblP1SpritePath = new Label();
             tabPage2 = new TabPage();
-            btnP1ImportSprite = new Button();
             btnSaveChart = new Button();
             tabLevelEdit.SuspendLayout();
             tpSpriteImport.SuspendLayout();
@@ -96,13 +101,18 @@
             // 
             // tpSpriteImport
             // 
+            tpSpriteImport.Controls.Add(lblAngle);
+            tpSpriteImport.Controls.Add(numP1Angle);
+            tpSpriteImport.Controls.Add(numP1ScaleY);
+            tpSpriteImport.Controls.Add(numP1ScaleX);
+            tpSpriteImport.Controls.Add(numP1PivotY);
+            tpSpriteImport.Controls.Add(numP1PivotX);
+            tpSpriteImport.Controls.Add(numP1PositionY);
+            tpSpriteImport.Controls.Add(numP1PositionX);
+            tpSpriteImport.Controls.Add(lblP1Pivot);
             tpSpriteImport.Controls.Add(btnP1ImportSprite);
             tpSpriteImport.Controls.Add(lblP1Scale);
-            tpSpriteImport.Controls.Add(txtP1ScaleX);
-            tpSpriteImport.Controls.Add(txtP1ScaleY);
             tpSpriteImport.Controls.Add(lblP1Position);
-            tpSpriteImport.Controls.Add(txtP1PositionY);
-            tpSpriteImport.Controls.Add(txtP1PositionX);
             tpSpriteImport.Controls.Add(nudP1Depth);
             tpSpriteImport.Controls.Add(chkP1Visibility);
             tpSpriteImport.Controls.Add(lblP1Depth);
@@ -118,59 +128,142 @@
             tpSpriteImport.Text = "导入精灵";
             tpSpriteImport.UseVisualStyleBackColor = true;
             // 
+            // lblAngle
+            // 
+            lblAngle.AutoSize = true;
+            lblAngle.Location = new Point(20, 260);
+            lblAngle.Name = "lblAngle";
+            lblAngle.Size = new Size(46, 24);
+            lblAngle.TabIndex = 26;
+            lblAngle.Text = "角度";
+            // 
+            // numP1Angle
+            // 
+            numP1Angle.DefaultValue = 0F;
+            numP1Angle.IsNull = false;
+            numP1Angle.IsNullable = true;
+            numP1Angle.Location = new Point(72, 257);
+            numP1Angle.Name = "numP1Angle";
+            numP1Angle.PlaceholderText = "--";
+            numP1Angle.Size = new Size(126, 30);
+            numP1Angle.TabIndex = 25;
+            numP1Angle.Text = "0";
+            numP1Angle.Value = 0F;
+            // 
+            // numP1ScaleY
+            // 
+            numP1ScaleY.DefaultValue = 1F;
+            numP1ScaleY.IsNull = false;
+            numP1ScaleY.IsNullable = true;
+            numP1ScaleY.Location = new Point(138, 221);
+            numP1ScaleY.Name = "numP1ScaleY";
+            numP1ScaleY.PlaceholderText = "--";
+            numP1ScaleY.Size = new Size(60, 30);
+            numP1ScaleY.TabIndex = 24;
+            numP1ScaleY.Text = "1";
+            numP1ScaleY.Value = 1F;
+            // 
+            // numP1ScaleX
+            // 
+            numP1ScaleX.DefaultValue = 1F;
+            numP1ScaleX.IsNull = false;
+            numP1ScaleX.IsNullable = true;
+            numP1ScaleX.Location = new Point(72, 221);
+            numP1ScaleX.Name = "numP1ScaleX";
+            numP1ScaleX.PlaceholderText = "--";
+            numP1ScaleX.Size = new Size(60, 30);
+            numP1ScaleX.TabIndex = 23;
+            numP1ScaleX.Text = "1";
+            numP1ScaleX.Value = 1F;
+            // 
+            // numP1PivotY
+            // 
+            numP1PivotY.DefaultValue = 50F;
+            numP1PivotY.IsNull = false;
+            numP1PivotY.IsNullable = true;
+            numP1PivotY.Location = new Point(138, 293);
+            numP1PivotY.Name = "numP1PivotY";
+            numP1PivotY.PlaceholderText = "--";
+            numP1PivotY.Size = new Size(60, 30);
+            numP1PivotY.TabIndex = 22;
+            numP1PivotY.Text = "50";
+            numP1PivotY.Value = 50F;
+            // 
+            // numP1PivotX
+            // 
+            numP1PivotX.DefaultValue = 50F;
+            numP1PivotX.IsNull = false;
+            numP1PivotX.IsNullable = true;
+            numP1PivotX.Location = new Point(72, 293);
+            numP1PivotX.Name = "numP1PivotX";
+            numP1PivotX.PlaceholderText = "--";
+            numP1PivotX.Size = new Size(60, 30);
+            numP1PivotX.TabIndex = 21;
+            numP1PivotX.Text = "50";
+            numP1PivotX.Value = 50F;
+            // 
+            // numP1PositionY
+            // 
+            numP1PositionY.DefaultValue = 50F;
+            numP1PositionY.IsNull = false;
+            numP1PositionY.IsNullable = true;
+            numP1PositionY.Location = new Point(138, 185);
+            numP1PositionY.Name = "numP1PositionY";
+            numP1PositionY.PlaceholderText = "--";
+            numP1PositionY.Size = new Size(60, 30);
+            numP1PositionY.TabIndex = 20;
+            numP1PositionY.Text = "50";
+            numP1PositionY.Value = 50F;
+            // 
+            // numP1PositionX
+            // 
+            numP1PositionX.DefaultValue = 50F;
+            numP1PositionX.IsNull = false;
+            numP1PositionX.IsNullable = true;
+            numP1PositionX.Location = new Point(72, 185);
+            numP1PositionX.Name = "numP1PositionX";
+            numP1PositionX.PlaceholderText = "--";
+            numP1PositionX.Size = new Size(60, 30);
+            numP1PositionX.TabIndex = 19;
+            numP1PositionX.Text = "50";
+            numP1PositionX.Value = 50F;
+            // 
+            // lblP1Pivot
+            // 
+            lblP1Pivot.AutoSize = true;
+            lblP1Pivot.Location = new Point(20, 296);
+            lblP1Pivot.Name = "lblP1Pivot";
+            lblP1Pivot.Size = new Size(46, 24);
+            lblP1Pivot.TabIndex = 18;
+            lblP1Pivot.Text = "轴点";
+            // 
+            // btnP1ImportSprite
+            // 
+            btnP1ImportSprite.Location = new Point(562, 369);
+            btnP1ImportSprite.Name = "btnP1ImportSprite";
+            btnP1ImportSprite.Size = new Size(178, 34);
+            btnP1ImportSprite.TabIndex = 15;
+            btnP1ImportSprite.Text = "导入";
+            btnP1ImportSprite.UseVisualStyleBackColor = true;
+            btnP1ImportSprite.Click += btnP1ImportSprite_Click;
+            // 
             // lblP1Scale
             // 
             lblP1Scale.AutoSize = true;
-            lblP1Scale.Location = new Point(20, 225);
+            lblP1Scale.Location = new Point(20, 224);
             lblP1Scale.Name = "lblP1Scale";
             lblP1Scale.Size = new Size(46, 24);
             lblP1Scale.TabIndex = 14;
             lblP1Scale.Text = "缩放";
             // 
-            // txtP1ScaleX
-            // 
-            txtP1ScaleX.Location = new Point(138, 222);
-            txtP1ScaleX.Name = "txtP1ScaleX";
-            txtP1ScaleX.Size = new Size(60, 30);
-            txtP1ScaleX.TabIndex = 13;
-            txtP1ScaleX.Text = "100";
-            txtP1ScaleX.LostFocus += txtP1ScaleX_LostFocus;
-            // 
-            // txtP1ScaleY
-            // 
-            txtP1ScaleY.Location = new Point(72, 222);
-            txtP1ScaleY.Name = "txtP1ScaleY";
-            txtP1ScaleY.Size = new Size(60, 30);
-            txtP1ScaleY.TabIndex = 12;
-            txtP1ScaleY.Text = "100";
-            txtP1ScaleY.LostFocus += txtP1ScaleY_LostFocus;
-            // 
             // lblP1Position
             // 
             lblP1Position.AutoSize = true;
-            lblP1Position.Location = new Point(20, 189);
+            lblP1Position.Location = new Point(20, 188);
             lblP1Position.Name = "lblP1Position";
             lblP1Position.Size = new Size(46, 24);
             lblP1Position.TabIndex = 11;
             lblP1Position.Text = "位置";
-            // 
-            // txtP1PositionY
-            // 
-            txtP1PositionY.Location = new Point(138, 186);
-            txtP1PositionY.Name = "txtP1PositionY";
-            txtP1PositionY.Size = new Size(60, 30);
-            txtP1PositionY.TabIndex = 10;
-            txtP1PositionY.Text = "50";
-            txtP1PositionY.LostFocus += txtP1PositionY_LostFocus;
-            // 
-            // txtP1PositionX
-            // 
-            txtP1PositionX.Location = new Point(72, 186);
-            txtP1PositionX.Name = "txtP1PositionX";
-            txtP1PositionX.Size = new Size(60, 30);
-            txtP1PositionX.TabIndex = 9;
-            txtP1PositionX.Text = "50";
-            txtP1PositionX.LostFocus += txtP1PositionX_LostFocus;
             // 
             // nudP1Depth
             // 
@@ -233,22 +326,14 @@
             tabPage2.Location = new Point(4, 33);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(746, 443);
+            tabPage2.Size = new Size(746, 409);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // btnP1ImportSprite
-            // 
-            btnP1ImportSprite.Location = new Point(20, 258);
-            btnP1ImportSprite.Name = "btnP1ImportSprite";
-            btnP1ImportSprite.Size = new Size(178, 34);
-            btnP1ImportSprite.TabIndex = 15;
-            btnP1ImportSprite.Text = "导入";
-            btnP1ImportSprite.UseVisualStyleBackColor = true;
-            // 
             // btnSaveChart
             // 
+            btnSaveChart.Enabled = false;
             btnSaveChart.Location = new Point(654, 504);
             btnSaveChart.Name = "btnSaveChart";
             btnSaveChart.Size = new Size(112, 34);
@@ -293,13 +378,18 @@
         private CheckBox chkP1Visibility;
         private Label lblP1Depth;
         private NumericUpDown nudP1Depth;
-        private TextBox txtP1PositionX;
-        private TextBox txtP1PositionY;
         private Label lblP1Position;
         private Label lblP1Scale;
-        private TextBox txtP1ScaleX;
-        private TextBox txtP1ScaleY;
         private Button btnP1ImportSprite;
         private Button btnSaveChart;
+        private Label lblP1Pivot;
+        private NumberBox numP1PositionX;
+        private NumberBox numP1PositionY;
+        private NumberBox numP1ScaleY;
+        private NumberBox numP1ScaleX;
+        private NumberBox numP1PivotY;
+        private NumberBox numP1PivotX;
+        private NumberBox numP1Angle;
+        private Label lblAngle;
     }
 }

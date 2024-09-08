@@ -1,11 +1,12 @@
 using RhythmBase.Components;
-using static Revalian.Ian;
+using System.Linq.Expressions;
 
 namespace Revalian
 {
     public partial class Revali : System.Windows.Forms.Form
     {
         public RDLevel chart;
+        public string p1SpritePath = "";
 
         public Revali()
         {
@@ -14,9 +15,11 @@ namespace Revalian
 
         private void btnSelectChart_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "《节奏医生》关卡文件|*.rdlevel";
-            dialog.Title = "打开《节奏医生》关卡";
+            OpenFileDialog dialog = new()
+            {
+                Filter = "《节奏医生》关卡文件|*.rdlevel",
+                Title = "打开《节奏医生》自制谱面"
+            };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 string chartPath = dialog.FileName;
@@ -24,10 +27,11 @@ namespace Revalian
                 {
                     chart = RDLevel.LoadFile(chartPath);
                     tabLevelEdit.Enabled = true;
+                    btnSaveChart.Enabled = true;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("在尝试打开关卡文件时出现了以下问题：\n" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("在尝试打开谱面时出现了以下问题：\n" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 lblChartPath.Text = chartPath;
@@ -37,52 +41,62 @@ namespace Revalian
 
         private void btnP1SelectSprite_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "JSON 文件|*.jpeg;*.jpg;*.png;*.gif;*.json";
-            dialog.Title = "选择精灵图片数据";
+            OpenFileDialog dialog = new()
+            {
+                Filter = "精灵图文件|*.jpeg;*.jpg;*.png;*.gif;*.json",
+                Title = "选择精灵图文件"
+            };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                string p1SpritePath = dialog.FileName;
+                p1SpritePath = dialog.FileName;
                 try
                 {
 
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("在尝试打开精灵图片数据时出现了以下问题：\n" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("在尝试打开精灵图时出现了以下问题：\n" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 lblP1SpritePath.Text = p1SpritePath;
             }
         }
 
-        private void txtP1PositionX_LostFocus(object sender, EventArgs e)
-        {
-            bool result = double.TryParse(txtP1PositionX.Text, out double _);
-            if (!result) txtP1PositionY.Text = "50";
-        }
-
-        private void txtP1PositionY_LostFocus(object sender, EventArgs e)
-        {
-            bool result = double.TryParse(txtP1PositionY.Text, out double _);
-            if (!result) txtP1PositionY.Text = "50";
-        }
-
-        private void txtP1ScaleX_LostFocus(object sender, EventArgs e)
-        {
-            bool result = double.TryParse(txtP1ScaleX.Text, out double _);
-            if (!result) txtP1ScaleX.Text = "100";
-        }
-
-        private void txtP1ScaleY_LostFocus(object sender, EventArgs e)
-        {
-            bool result = double.TryParse(txtP1ScaleY.Text, out double _);
-            if (!result) txtP1ScaleY.Text = "100";
-        }
-
         private void btnSaveChart_Click(object sender, EventArgs e)
         {
-            
+            SaveFileDialog dialog = new()
+            {
+                Filter = "《节奏医生》关卡文件|*.rdlevel",
+                Title = "选择谱面保存位置"
+            };
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                chart.SaveFile(dialog.FileName);
+                MessageBox.Show("谱面保存成功！");
+            }
+        }
+
+        private void btnP1ImportSprite_Click(object sender, EventArgs e)
+        {
+            if (p1SpritePath != string.Empty)
+            {
+                try
+                {
+                    Ian.AddNewSprite(chart, lblP1SpritePath.Text,
+                        (byte)(nudP1Room.Value - 1), chkP1Visibility.Checked, (int)nudP1Depth.Value,
+                        new PointE(numP1PositionX.Value, numP1PositionY.Value),
+                        new PointE(numP1ScaleX.Value, numP1ScaleY.Value));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("在尝试导入精灵图时出现了以下问题：\n" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("尚未选择精灵图文件！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

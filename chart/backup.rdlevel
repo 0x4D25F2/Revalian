@@ -1,0 +1,87 @@
+﻿{
+	"settings":
+	{
+		"version": 60, 
+		"artist": "", 
+		"song": "", 
+		"specialArtistType": "None", 
+		"artistPermission": "", 
+		"artistLinks": "", 
+		"author": "", 
+		"difficulty": "Medium", 
+		"seizureWarning": false, 
+		"previewImage": "", 
+		"syringeIcon": "", 
+		"previewSong": "", 
+		"previewSongStartTime": 0, 
+		"previewSongDuration": 10, 
+		"songNameHue": 0.2690098, 
+		"songLabelGrayscale": false, 
+		"description": "", 
+		"tags": "", 
+		"separate2PLevelFilename": "", 
+		"canBePlayedOn": "OnePlayerOnly", 
+		"firstBeatBehavior": "RunNormally", 
+		"multiplayerAppearance": "HorizontalStrips", 
+		"levelVolume": 1, 
+		"rankMaxMistakes": [20, 15, 10, 5], 
+
+		"rankDescription":
+		[
+			"你这个毫无希望的实习生！",
+			"啊，你还可以做得更好",
+			"嗯，勉强还成……",
+			"咱们是黄金组合！",
+			"你的表现真给力！",
+			"惊艳绝伦的演出！！"
+		]
+	},
+	"rows":
+	[
+		{ "rooms": [0], "row": 0, "rowType": "Classic", "character": "Samurai", "player": "P1", "pulseSound": "Shaker" },
+	],
+	"decorations":
+	[
+		{ "rooms": [0], "row": 0, "visible": true, "depth": 0, "id": "f4wosc0", "filename": "" },
+	],
+	"events":
+	[
+		{ "bar": 1, "beat": 1, "y": 0, "type": "SetTheme", "rooms": [0], "preset": "OrientalTechno" },
+		{ "bar": 1, "y": 0, "type": "PlaySong", "song": {"filename": "sndOrientalTechno"}, "loop": false, "bpm": 100 },
+		{ "bar": 1, "beat": 1, "y": 0, "type": "AddClassicBeat", "row": 0, "hold": 0, "tick": 1, "swing": 0 },
+		{ "bar": 1, "beat": 1, "type": "Move", "target": "f4wosc0", "ease": "Linear", "position": [-999, 1.2], "duration": 1 },
+		{ "bar": 1, "beat": 2, "type": "Tint", "target": "f4wosc0", "ease": "Linear", "border": "None", "opacity": 100, "tint": false, "duration": 0 },
+		{ "bar": 1, "beat": 3, "type": "PlayAnimation", "target": "f4wosc0", "expression": "neutral" },
+		{ "bar": 1, "beat": 4, "type": "Tile", "target": "f4wosc0", "ease": "Linear", "tiling": [null, null], "duration": 0 },
+	],
+	"conditionals":
+	[
+	],
+	"bookmarks":
+	[
+	],
+	"colorPalette":
+	[
+		"000000ff",
+		"ffffffff",
+		"7f7f7fff",
+		"c3c3c3ff",
+		"880015ff",
+		"b97a57ff",
+		"ff0000ff",
+		"ffaec9ff",
+		"ff7f27ff",
+		"ffc90eff",
+		"fff200ff",
+		"efe4b0ff",
+		"22b14cff",
+		"b5e61dff",
+		"00a2e8ff",
+		"99d9eaff",
+		"3f48ccff",
+		"7092beff",
+		"a349a4ff",
+		"c8bfe7ff",
+		"00000000"
+	]
+}

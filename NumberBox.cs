@@ -43,16 +43,26 @@ namespace Revalian
         protected override void OnLostFocus(EventArgs e)
         {
             base.OnLostFocus(e);
-            if (Text == string.Empty && IsNullable) Value = null;
+            if (Text == string.Empty)
+                if (IsNullable)
+                    Value = null;
+                else
+                {
+                    Value = DefaultValue;
+                    Text = Value.ToString();
+                }
             else
             {
                 Value = CalcWithoutValue();
-                if (Value == null) {
-                    if (!IsCalc || Calc(1) == null) {
+                if (Value == null)
+                {
+                    if (!IsCalc || Calc(1) == null)
+                    {
                         Value = DefaultValue;
                         Text = Value.ToString();
-                    }                    
-                } else Text = Value.ToString();
+                    }
+                }
+                else Text = Value.ToString();
             }
         }
 

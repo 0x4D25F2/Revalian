@@ -33,6 +33,7 @@
             lblChartPath = new Label();
             btnSaveChart = new Button();
             tpSpriteImport = new TabPage();
+            ckbP1AddEvent = new CheckBox();
             chkP1CopyFile = new CheckBox();
             numP1Room = new NumberBox();
             numP1Depth = new NumberBox();
@@ -89,6 +90,7 @@
             lblFrom = new Label();
             cmbP2SpriteSelect = new ComboBox();
             lstP2SpriteSelect = new ListBox();
+            btnReload = new Button();
             tpSpriteImport.SuspendLayout();
             tabLevelEdit.SuspendLayout();
             tpSpriteEventCopy.SuspendLayout();
@@ -128,6 +130,7 @@
             // 
             // tpSpriteImport
             // 
+            tpSpriteImport.Controls.Add(ckbP1AddEvent);
             tpSpriteImport.Controls.Add(chkP1CopyFile);
             tpSpriteImport.Controls.Add(numP1Room);
             tpSpriteImport.Controls.Add(numP1Depth);
@@ -160,6 +163,18 @@
             tpSpriteImport.TabIndex = 0;
             tpSpriteImport.Text = "导入精灵";
             tpSpriteImport.UseVisualStyleBackColor = true;
+            // 
+            // ckbP1AddEvent
+            // 
+            ckbP1AddEvent.AutoSize = true;
+            ckbP1AddEvent.Checked = true;
+            ckbP1AddEvent.CheckState = CheckState.Checked;
+            ckbP1AddEvent.Location = new Point(751, 124);
+            ckbP1AddEvent.Name = "ckbP1AddEvent";
+            ckbP1AddEvent.Size = new Size(162, 28);
+            ckbP1AddEvent.TabIndex = 36;
+            ckbP1AddEvent.Text = "添加初始化事件";
+            ckbP1AddEvent.UseVisualStyleBackColor = true;
             // 
             // chkP1CopyFile
             // 
@@ -211,7 +226,7 @@
             numP1Angle.IsCalc = true;
             numP1Angle.IsNull = false;
             numP1Angle.IsNullable = true;
-            numP1Angle.Location = new Point(803, 197);
+            numP1Angle.Location = new Point(803, 227);
             numP1Angle.MaxValue = float.MaxValue;
             numP1Angle.MinValue = float.MinValue;
             numP1Angle.Name = "numP1Angle";
@@ -228,7 +243,7 @@
             numP1ScaleY.IsCalc = true;
             numP1ScaleY.IsNull = false;
             numP1ScaleY.IsNullable = true;
-            numP1ScaleY.Location = new Point(869, 161);
+            numP1ScaleY.Location = new Point(869, 191);
             numP1ScaleY.MaxValue = float.MaxValue;
             numP1ScaleY.MinValue = float.MinValue;
             numP1ScaleY.Name = "numP1ScaleY";
@@ -245,7 +260,7 @@
             numP1ScaleX.IsCalc = true;
             numP1ScaleX.IsNull = false;
             numP1ScaleX.IsNullable = true;
-            numP1ScaleX.Location = new Point(803, 161);
+            numP1ScaleX.Location = new Point(803, 191);
             numP1ScaleX.MaxValue = float.MaxValue;
             numP1ScaleX.MinValue = float.MinValue;
             numP1ScaleX.Name = "numP1ScaleX";
@@ -262,7 +277,7 @@
             numP1PivotY.IsCalc = true;
             numP1PivotY.IsNull = false;
             numP1PivotY.IsNullable = true;
-            numP1PivotY.Location = new Point(869, 233);
+            numP1PivotY.Location = new Point(869, 263);
             numP1PivotY.MaxValue = float.MaxValue;
             numP1PivotY.MinValue = float.MinValue;
             numP1PivotY.Name = "numP1PivotY";
@@ -279,7 +294,7 @@
             numP1PivotX.IsCalc = true;
             numP1PivotX.IsNull = false;
             numP1PivotX.IsNullable = true;
-            numP1PivotX.Location = new Point(803, 233);
+            numP1PivotX.Location = new Point(803, 263);
             numP1PivotX.MaxValue = float.MaxValue;
             numP1PivotX.MinValue = float.MinValue;
             numP1PivotX.Name = "numP1PivotX";
@@ -296,7 +311,7 @@
             numP1PositionY.IsCalc = true;
             numP1PositionY.IsNull = false;
             numP1PositionY.IsNullable = true;
-            numP1PositionY.Location = new Point(869, 125);
+            numP1PositionY.Location = new Point(869, 155);
             numP1PositionY.MaxValue = float.MaxValue;
             numP1PositionY.MinValue = float.MinValue;
             numP1PositionY.Name = "numP1PositionY";
@@ -313,7 +328,7 @@
             numP1PositionX.IsCalc = true;
             numP1PositionX.IsNull = false;
             numP1PositionX.IsNullable = true;
-            numP1PositionX.Location = new Point(803, 125);
+            numP1PositionX.Location = new Point(803, 155);
             numP1PositionX.MaxValue = float.MaxValue;
             numP1PositionX.MinValue = float.MinValue;
             numP1PositionX.Name = "numP1PositionX";
@@ -387,7 +402,7 @@
             // lblAngle
             // 
             lblAngle.AutoSize = true;
-            lblAngle.Location = new Point(751, 200);
+            lblAngle.Location = new Point(751, 230);
             lblAngle.Name = "lblAngle";
             lblAngle.Size = new Size(46, 24);
             lblAngle.TabIndex = 26;
@@ -396,7 +411,7 @@
             // lblP1Pivot
             // 
             lblP1Pivot.AutoSize = true;
-            lblP1Pivot.Location = new Point(751, 236);
+            lblP1Pivot.Location = new Point(751, 266);
             lblP1Pivot.Name = "lblP1Pivot";
             lblP1Pivot.Size = new Size(46, 24);
             lblP1Pivot.TabIndex = 18;
@@ -415,7 +430,7 @@
             // lblP1Scale
             // 
             lblP1Scale.AutoSize = true;
-            lblP1Scale.Location = new Point(751, 164);
+            lblP1Scale.Location = new Point(751, 194);
             lblP1Scale.Name = "lblP1Scale";
             lblP1Scale.Size = new Size(46, 24);
             lblP1Scale.TabIndex = 14;
@@ -424,7 +439,7 @@
             // lblP1Position
             // 
             lblP1Position.AutoSize = true;
-            lblP1Position.Location = new Point(751, 128);
+            lblP1Position.Location = new Point(751, 158);
             lblP1Position.Name = "lblP1Position";
             lblP1Position.Size = new Size(46, 24);
             lblP1Position.TabIndex = 11;
@@ -867,11 +882,23 @@
             lstP2SpriteSelect.Size = new Size(270, 532);
             lstP2SpriteSelect.TabIndex = 0;
             // 
+            // btnReload
+            // 
+            btnReload.Enabled = false;
+            btnReload.Location = new Point(16, 710);
+            btnReload.Name = "btnReload";
+            btnReload.Size = new Size(112, 34);
+            btnReload.TabIndex = 6;
+            btnReload.Text = "重载谱面";
+            btnReload.UseVisualStyleBackColor = true;
+            btnReload.Click += btnReload_Click;
+            // 
             // Revali
             // 
             AutoScaleDimensions = new SizeF(11F, 24F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(978, 756);
+            Controls.Add(btnReload);
             Controls.Add(btnSaveChart);
             Controls.Add(tabLevelEdit);
             Controls.Add(lblChartPath);
@@ -954,5 +981,7 @@
         private Label lblP2Angle;
         private Label lblP2Pivot;
         private Label lblP2Scale;
+        private Button btnReload;
+        private CheckBox ckbP1AddEvent;
     }
 }

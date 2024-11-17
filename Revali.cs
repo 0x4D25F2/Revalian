@@ -44,6 +44,7 @@ namespace Revalian
             nudP2FromBar.Maximum = chart.Length.BarBeat.bar + 1;
             nudP2ToBar.Maximum = chart.Length.BarBeat.bar + 1;
             nudP2ToBar.Value = nudP2ToBar.Maximum;
+            cmbP2SpriteSelect.Text = "";
         }
 
         private void btnSelectChart_Click(object sender, EventArgs e)
@@ -56,17 +57,18 @@ namespace Revalian
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 string chartPath = dialog.FileName;
-                try
-                {
+                //try
+                //{
                     chart = RDLevel.Read(chartPath);
                     tabLevelEdit.Enabled = true;
                     btnSaveChart.Enabled = true;
-                }
+                    btnReload.Enabled = true;
+                /*}
                 catch (Exception ex)
                 {
                     MessageBox.Show("在尝试打开谱面时出现了以下问题：\n" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
-                }
+                }*/
                 lblChartPath.Text = chartPath;
                 UpdateChartInfo();
             }
@@ -124,7 +126,7 @@ namespace Revalian
             {
                 string path = dialog.FileName;
                 chart.Write(path);
-                MessageBox.Show("谱面保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("谱面保存成功。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -137,19 +139,19 @@ namespace Revalian
                     for (int i = 0; i < p1SpritePathList.Count; i++)
                         Ian.AddNewSprite(chart, p1SpritePathList[i],
                             (byte)(numP1Room.Calc(i) - 1), chkP1Visibility.Checked, (int)numP1Depth.Calc(i),
-                            new RDPointE(numP1PositionX.Calc(i), numP1PositionY.Calc(i)), new RDPointE(numP1ScaleX.Calc(i), numP1ScaleY.Calc(i)),
-                            numP1Angle.Calc(i), new RDPointE(numP1PivotX.Calc(i), numP1PivotY.Calc(i)));
+                            new RDPointE(numP1PositionX.Calc(i), numP1PositionY.Calc(i)), new RDSizeE(numP1ScaleX.Calc(i), numP1ScaleY.Calc(i)),
+                            numP1Angle.Calc(i), new RDPointE(numP1PivotX.Calc(i), numP1PivotY.Calc(i)), ckbP1AddEvent.Checked);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"在尝试导入精灵图时出现了以下问题：\n{ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                MessageBox.Show("精灵图导入成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("精灵图导入成功。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("尚未选择精灵图文件！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("尚未选择精灵图文件。", "导入失败", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -186,17 +188,26 @@ namespace Revalian
                     Ian.AddSpriteEvent(chart, decos[lstP2SpriteSelect.SelectedIndices[i]], events, numP2ParallaxX.Calc(i), numP2ParallaxY.Calc(i),
                         numP2PositionOffsetX.Calc(i), numP2PositionOffsetY.Calc(i),
                         [numP2ScaleX.Calc(i), numP2ScaleY.Calc(i)], numP2Angle.Calc(i), [numP2PivotX.Calc(i), numP2PivotY.Calc(i)]);
-                MessageBox.Show("复制成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("复制成功。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("尚未选择要复制的精灵图！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("尚未选择要复制的精灵图。", "复制失败", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void numP2ParallaxX_TextChanged(object sender, EventArgs e)
+        private void btnReload_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                chart = RDLevel.Read(lblChartPath.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("在尝试重载谱面时出现了以下问题：\n" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            MessageBox.Show("重载完成。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

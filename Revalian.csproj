@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="RhythmBase" Version="1.0.6-beta6-d" />
+    <PackageReference Include="RhythmBase" Version="1.0.6-beta7-c" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.4.5" />
   </ItemGroup>
 
